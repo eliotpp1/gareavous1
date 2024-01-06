@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
         bouton.classList.toggle('active');
     }
 
-    
+
 });
 
 
@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', function () {
 fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/trafic-de-voyageurs-et-marchandises-depuis-1841/records?select=AVG(voyageurs)%20AS%20moyenne_voyageurs&where=annee%20%3E%3D%202000%20AND%20annee%20%3C%3D%202019&limit=1")
     .then(response => response.json())
     .then(data => {
-        
+
         // Conversion du nombre
         const moyenneVoyageurs = data.results[0].moyenne_voyageurs;
         const convertedValue = moyenneVoyageurs / 1000; // Divisez par 1000 pour obtenir le résultat en milliards
@@ -66,7 +66,7 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/nombre
     .then(response => response.json())
     .then(data => {
 
-        
+
         // Conversion du nombre
         const totalEffectif = data.results[0].total_effectif;
         const convertedValue = totalEffectif / 1000; // Divisez par 1000 pour obtenir le résultat en milliards
@@ -76,11 +76,11 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/nombre
     })
     .catch(error => console.log(error));
 
-    fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/referentiel-gares-voyageurs/records?select=COUNT(code_gare)%20AS%20total_gares&limit=1")
+fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/referentiel-gares-voyageurs/records?select=COUNT(code_gare)%20AS%20total_gares&limit=1")
     .then(response => response.json())
     .then(data => {
 
-        
+
         // Conversion du nombre
         const totalGares = data.results[0].total_gares;
         const convertedValue = Math.floor(totalGares / 1); // Arrondir à l'entier inférieur
@@ -121,7 +121,7 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-
 
             celluleCatégorie.textContent = result.categorie_produit;
             celluleProduit.textContent = result.produit;
-            cellulePrix.textContent = result.prix_au_produit+'€';
+            cellulePrix.textContent = result.prix_au_produit + '€';
         });
 
         // Ajout du tableau au document
@@ -130,3 +130,71 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-
     .catch(error => console.log(error));
 
 
+fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-des-bars-tgv/records?select=AVG(prix_au_produit)%20AS%20moyenne_prix&limit=1")
+    .then(response => response.json())
+    .then(data => {
+
+        // Conversion du nombre
+        const moyennePrix = parseFloat(data.results[0].moyenne_prix);
+
+        // Arrondi à un chiffre après la virgule
+        const moyenneArrondie = moyennePrix.toFixed(1);
+
+        // Affichage du résultat
+        document.querySelector("#moyenne_prix").innerHTML += " " + moyenneArrondie + " €";
+    })
+    .catch(error => {
+        console.error("Une erreur s'est produite lors de la récupération des données :", error);
+    });
+
+fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-des-bars-tgv/records?select=COUNT(*)%20AS%20total_vegan&where=%20recette_vegane%20%3D%20%27OUI%27&limit=1")
+    .then(response => response.json())
+    .then(data => {
+
+
+        // Conversion du nombre
+        const totalVegan = data.results[0].total_vegan;
+        fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-des-bars-tgv/records?select=COUNT(*)%20AS%20total&limit=1")
+            .then(response => response.json())
+            .then(data => {
+                const total = data.results[0].total;
+                const pourcentage = (totalVegan / total) * 100;
+                const pourcentageArrondi = pourcentage.toFixed(1);
+
+                // Affichage du résultat
+                document.querySelector("#pourcentage_vegan").innerHTML += " " + pourcentageArrondi + " % des produits <br>sont vegan";
+            })
+
+
+    })
+
+
+// Première requête pour obtenir le nombre total de produits à base de porc
+fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-des-bars-tgv/records?select=COUNT(*)%20AS%20total_porc&where=presence_de_porc%20%3D%20%27OUI%27&limit=1")
+    .then(response => response.json())
+    .then(data1 => {
+        const total_porc = data1.results[0].total_porc;
+
+        // Deuxième requête pour obtenir le nombre total de produits
+        fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-des-bars-tgv/records?select=COUNT(*)%20AS%20total&limit=1")
+            .then(response => response.json())
+            .then(data2 => {
+                const total = data2.results[0].total;
+                console.log(total);
+                console.log(total_porc);
+
+                // Calcul du pourcentage
+                const pourcentage = (total_porc / total) * 100;
+                const pourcentageArrondi = pourcentage.toFixed(1);
+                
+
+                // Affichage du résultat
+                document.querySelector("#pourcentage_porc").innerHTML += pourcentageArrondi + " % des produits <br>sont à base de porc";
+            })
+            .catch(error2 => {
+                console.error("Une erreur s'est produite lors de la récupération du nombre total de produits :", error2);
+            });
+    })
+    .catch(error1 => {
+        console.error("Une erreur s'est produite lors de la récupération du nombre total de produits à base de porc :", error1);
+    });

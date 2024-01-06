@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../assets/css/style.css">
-    <title>Gare à vous !</title>
+    <title>Graphique SNCF</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -25,15 +26,14 @@
             <a href="./horaires.html">Les horaires des trains</a>
         </div>
     </header>
-    
-
-    <main>
+        <main>
         <section class="proprete">
             <h1>La propreté des gares</h1>
             <div class="card-image">
                 <img src="./../assets/images/Obsessive compulsive disorder-rafiki.png" alt="personne qui nettoie"
                     class="card-img">
             </div>
+            <canvas id="myChart" width="400" height="200"></canvas>
         </section>
 
 
@@ -45,6 +45,67 @@
             </p>
         </div>
     </footer>
+    
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Récupérer les données de l'API SNCF avec fetch
+            fetch('https://ressources.data.sncf.com//api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=nom_gare%2C%20%20%20YEAR(mois)%20%20AS%20%20annee%20%20%2C%20%20%20AVG(taux_de_conformite)%20AS%20Taux&where=nom_gare%20IN%20(\'Angoul%C3%AAme\'%2C%20\'Bordeaux%20Saint-Jean\'%2C%20\'Poitiers\')&group_by=nom_gare%2C%20%20%20YEAR(mois)&limit=20')
+                .then(response => response.json())
+                .then(data => {
+                    // Préparer les données pour le graphique
+                    const labels = Array.from(new Set(data.results.map(record => record.nom_gare)));
+                    const years = Array.from(new Set(data.results.map(record => record.YEAR_mois)));
+                    const datasets = [];
+
+                    labels.forEach(label => {
+                        const dataPoints = years.map(year => {
+                            const record = data.results.find(r => r.nom_gare === label && r.YEAR_mois === year);
+                            return record ? record.Taux : 0;
+                        });
+
+                        datasets.push({
+                            label: label,
+                            data: dataPoints,
+                            backgroundColor: getRandomColor(),
+                            borderColor: getRandomColor(),
+                            borderWidth: 1
+                        });
+                    });
+
+                    // Créer le graphique avec Chart.js
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: years,
+                            datasets: datasets
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    stacked: true
+                                },
+                                y: {
+                                    stacked: true
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Erreur lors de la récupération des données :', error));
+        });
+
+        // Fonction pour générer une couleur aléatoire
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
     <script src="./../assets/js/script.js"></script>
 </body>
 </html>

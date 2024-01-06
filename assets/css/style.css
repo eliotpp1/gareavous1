@@ -450,15 +450,6 @@ section h1{
     padding: 20px;
 }
 
-.horaires{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 30vh;
-    width: 100vw;
-    background-color: #FFE8E4;
-}
 
 
 .proprete{
@@ -568,4 +559,102 @@ th {
 .card1 h3{
     color: #651C32;
     font-weight: bold;
+}
+
+/* horaires*/
+
+
+.securite {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.dateSecurite{
+    margin-right: auto;
+    margin-left: auto;
+    width: 90vw;
+}
+
+#datasSecurite>h2{
+    color: #651C32;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 3vh;
+
+}
+
+.cartes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.carteFr{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to bottom, #F8C1B8, #FFF);
+    padding: 20px;
+}
+
+.carteFr img{
+    height: 120px;
+    width: 170px;
+    
+}
+
+.carteFr h3{
+    color: #651C32;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.carteFr h2{
+    position: absolute;
+    color: #FFF;
+    left: 13.5%;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.morts{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom, #F8C1B8, #FFF);
+    padding: 20px;
+
+}
+
+.morts i {
+    font-size: 6rem;
+    
+}
+
+.morts h3{
+    color: #651C32;
+    font-weight: bold;
+    font-size: 1rem;
 }

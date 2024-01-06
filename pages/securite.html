@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../assets/css/style.css">
     <title>Gare à vous !</title>
 </head>
+
 <body>
     <header>
         <nav>
@@ -23,17 +25,35 @@
             <a href="./../index.html">Accueil</a>
             <a href="./restauration.html">La carte de restauration bar TGV</a>
             <a href="./proprete.html">La propreté des gares</a>
-            <a href="#">Les horaires des trains</a>
+            <a href="#">La sécurité des trains</a>
         </div>
     </header>
-    
+
 
     <main>
-        <section class="horaires">
-            <h1>Les horaires de la SNCF</h1>
+        <section class="securite">
+            <h1>La sécurité dans les transports de la SNCF</h1>
             <div class="card-image">
-                <img src="./../assets/images/Train-amico.png" alt="chef qui cuisine"
-                    class="card-img">
+                <img src="./../assets/images/Train-amico.png" alt="chef qui cuisine" class="card-img">
+            </div>
+        </section>
+
+        <div class="split"></div>
+        
+        <section id="datasSecurite">
+            <h2>En résumé</h2>
+            <div class="dateSecurite">
+                <div class="cartes">
+                    <div class="carteFr">
+                        <img src="./../assets/images/france.svg" alt="carte de france">
+                        <h2>N°5 <br> <i class="fa-solid fa-medal"></i></h2>
+                        <h3 id="score"></h3>
+                    </div>
+                    <div class="morts">
+                        <h3 id="mort"></h3>
+                        <i class="fa-solid fa-skull"></i>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -48,4 +68,5 @@
     <script src="https://kit.fontawesome.com/9a21cee862.js" crossorigin="anonymous"></script>
     <script src="./../assets/js/script.js"></script>
 </body>
+
 </html>

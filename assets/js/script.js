@@ -198,3 +198,21 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-
     .catch(error1 => {
         console.error("Une erreur s'est produite lors de la récupération du nombre total de produits à base de porc :", error1);
     });
+
+
+    fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/eur-lex-vrn-2013/records?select=*&where=etat_membre%20IN%20(%27Irlande%27%2C%20%27France%27%2C%20%27Lituanie%27)&limit=20")
+    .then(response => response.json())
+    .then(data => {
+        const score = data.results[1].vnr;
+        const scoreArrondie = score.toFixed(0);
+        document.querySelector("#score").innerHTML = "La France est le 5 ème pays européen avec le réseaux ferroviaire le plus sûr pour ses utilisateurs avec un score de " + scoreArrondie + " valeurs nationales de référence (VNR)";
+    })
+    .catch(error => console.log(error));
+
+    fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/collisions-passages-niveau/records?select=SUM(tues_vehicule%20%2B%20pietons_tues%20%2B%20usagers_tues)%20AS%20total_nb_morts&limit=1")
+    .then(response => response.json())
+    .then(data => {
+        const totalMorts = data.results[0].total_nb_morts;
+        const totalMortsArrondie = totalMorts.toFixed(0);
+        document.querySelector("#mort").innerHTML = "Depuis 2004, " + totalMortsArrondie + " personnes sont mortes sur les passages à niveau";
+    })

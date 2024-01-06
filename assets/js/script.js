@@ -127,6 +127,6 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-
         // Ajout du tableau au document
         divTable.appendChild(tableau);
     })
-    .catch(error => console.error(error));
+    .catch(error => console.log(error));
 
 

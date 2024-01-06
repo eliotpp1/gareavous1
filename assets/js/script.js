@@ -60,7 +60,7 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/trafic
         // Affichage du résultat
         document.querySelector("#moyenne_voyageurs").innerHTML += convertedValue.toFixed(2) + " <br> Milliards";
     })
-    .catch(error => console.error(error));
+    .catch(error => console.log(error));
 
 fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/nombre-total-agents-effectifs/records?select=SUM(effectif)%20AS%20total_effectif&limit=1&refine=date%3A%222021%22")
     .then(response => response.json())
@@ -74,7 +74,7 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/nombre
         // Affichage du résultat
         document.querySelector("#total_effectif").innerHTML += convertedValue.toFixed(2) + " <br> Milliers";
     })
-    .catch(error => console.error(error));
+    .catch(error => console.log(error));
 
     fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/referentiel-gares-voyageurs/records?select=COUNT(code_gare)%20AS%20total_gares&limit=1")
     .then(response => response.json())
@@ -88,7 +88,7 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/nombre
         // Affichage du résultat
         document.querySelector("#total_gares").innerHTML += convertedValue + " <br> Gares";
     })
-    .catch(error => console.error(error));
+    .catch(error => console.log(error));
 
 //carte de restauration
 

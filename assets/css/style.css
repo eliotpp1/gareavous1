@@ -556,6 +556,10 @@ th {
     color: #651C32;
 }
 
+.stats h2 i{
+    font-size: 2rem;
+    margin-left: 10px;
+}
 .card1 h3{
     color: #651C32;
     font-weight: bold;

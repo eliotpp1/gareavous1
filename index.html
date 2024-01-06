@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Gare à vous !</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <a href="#"><img src="assets/images/LOGO.png" alt="logo gare a vous !"></a>
+                <div class="burger-icon" onclick="toggleMenu()">
+                    <div class="barre"></div>
+                    <div class="barre"></div>
+                    <div class="barre"></div>
+                </div>
+            </div>
+        </nav>
+        <div id="menu_burger" class="active" style="left: -300px;">
+            <a href="#"><img src="./../assets/images/LOGO.png" alt="logo gare a vous !"></a>
+            <a href="#">Accueil</a>
+            <a href="./pages/restauration.html">La carte de restauration bar TGV</a>
+            <a href="./pages/proprete.html">La propreté des gares</a>
+            <a href="./pages/horaires.html">Les horaires des trains</a>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="258" height="244" viewBox="0 0 258 244" fill="none">
+                <g filter="url(#filter0_d_3_6)">
+                    <path
+                        d="M106.392 34.259C123.984 22.2383 151.025 12.9904 162.347 9.86905C166.701 8.58131 176.499 7.00964 180.853 6.38477C183.611 6.09441 191.521 5.68791 201.101 6.38477C210.681 7.08163 220.188 11.7564 223.744 14.0066C229.84 17.3167 235.429 23.8062 237.461 26.6372C242.338 31.5152 244.863 41.3002 245.516 45.5829L249 90.0075C239.928 111.204 221.785 153.813 221.785 154.685C221.785 155.556 228.897 184.373 232.453 198.674L220.478 203.9C214.963 206.295 200.492 212.219 186.731 216.748C172.971 221.278 148.775 226.185 138.397 228.072C128.745 229.451 106.044 232.166 92.4578 231.992C75.4755 231.774 56.5337 228.943 40.8577 223.499C25.1817 218.055 15.8196 204.336 13.6424 199.98C11.4652 195.625 7.32848 182.777 9.72342 170.146C12.1184 157.515 14.731 145.974 22.569 129.859C30.407 113.744 31.4956 109.824 50.4374 84.3456C69.3793 58.8668 84.4021 49.285 106.392 34.259Z"
+                        fill="url(#paint0_linear_3_6)" shape-rendering="geometricPrecision " />
+                </g>
+                <defs>
+                    <filter id="filter0_d_3_6" x="0.6" y="0.6" width="256.8" height="242.8" filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                            result="hardAlpha" />
+                        <feOffset dy="3" />
+                        <feGaussianBlur stdDeviation="4.2" />
+                        <feComposite in2="hardAlpha" operator="out" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_6" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_6" result="shape" />
+                    </filter>
+                    <linearGradient id="paint0_linear_3_6" x1="235.5" y1="21.5" x2="9.00001" y2="226.5"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#EE7875" />
+                        <stop offset="1" stop-color="#F8C1B8" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="286" height="223" viewBox="0 0 286 223" fill="none">
+                <g filter="url(#filter0_d_3_5)">
+                    <path
+                        d="M258.466 99.1272C254.369 105.077 239.517 117.677 232.603 123.234C229.593 125.696 225.203 132.295 223.384 135.287C222.019 136.997 219.185 142.16 218.775 149.136C218.365 156.111 222.36 163.497 224.409 166.318C226.372 168.882 230.503 175.294 231.323 180.423C232.142 185.552 229.786 190.766 228.506 192.733C227.311 194.528 223.538 198.734 218.007 201.196C212.476 203.658 204.435 203.076 201.106 202.478C193.527 200.631 187.022 196.066 184.718 194.015L168.585 178.628C166.281 176.405 159.828 170.524 152.453 164.779C145.078 159.035 132.821 160.334 127.614 161.702L113.274 165.805L106.36 167.857C98.1657 168.882 87.9229 167.6 82.2893 166.831C76.6558 166.061 59.243 159.907 53.0973 156.316C46.9516 152.726 35.1723 144.263 25.6977 130.414C16.223 116.566 12.6381 99.1272 12.1259 85.2787C11.6138 71.4302 12.382 62.7108 19.808 44.7591C25.7489 30.3977 38.3305 19.1138 43.8787 15.267C47.8051 12.3605 59.243 6.08595 73.5829 4.23949C87.9229 2.39303 104.653 11.6766 111.225 16.5492C112.506 17.5751 119.164 21.7809 135.552 30.3977C151.941 39.0145 174.646 32.1074 183.95 27.5767C188.644 25.7816 200.287 21.0628 209.301 16.5492C218.314 12.0357 231.152 11.7621 236.444 12.1895C239.773 12.1895 248.479 13.8308 256.674 20.396C264.868 26.9612 269.989 37.8349 271.526 42.451C273.062 46.3833 275.469 57.274 272.806 69.3786C269.477 84.5093 263.588 91.69 258.466 99.1272Z"
+                        fill="url(#paint0_linear_3_5)" shape-rendering="geometricPrecision " />
+                </g>
+                <defs>
+                    <filter id="filter0_d_3_5" x="0.7" y="0.7" width="284.6" height="221.6" filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                            result="hardAlpha" />
+                        <feOffset dy="8" />
+                        <feGaussianBlur stdDeviation="5.65" />
+                        <feComposite in2="hardAlpha" operator="out" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0" />
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_5" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_5" result="shape" />
+                    </filter>
+                    <linearGradient id="paint0_linear_3_5" x1="254" y1="42.5" x2="-2" y2="94"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#F2827F" />
+                        <stop offset="0.9999" stop-color="#F8C1B8" />
+                        <stop offset="1" stop-color="#F2827F" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div class="home-text">
+                <h1>CHIFFRES <br>CLÉS</h1>
+                <h2>SNCF</h2>
+            </div>
+        </section>
+        <div class="split"></div>
+        <section class="indicateurs">
+            <div class="column">
+                <div class="chiffres">
+                    <h3 id="moyenne_voyageurs"></h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="120" height="118" viewBox="0 0 120 118" fill="none">
+                        <g filter="url(#filter0_d_8_5)">
+                            <path
+                                d="M45.49 5.88422C28.1049 5.88422 17.5497 14.8506 14.4453 19.3339C10.306 27.1795 2.64829 45.5606 5.13187 56.3204C8.23634 69.77 14.4453 83.2196 26.8631 100.032C36.7974 113.481 68.2561 110.119 82.7436 106.757C100.129 104.067 110.684 85.4612 113.788 76.4948C119.997 49.5955 110.684 32.7835 107.579 26.0587C104.475 19.3339 88.9525 5.88422 82.7436 2.52181C76.5347 -0.840602 70.3257 -0.840602 64.1168 2.52181C59.1496 5.21173 49.6293 5.88422 45.49 5.88422Z"
+                                fill="#F2827F" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_8_5" x="0.646881" y="0" width="119.23" height="117.764"
+                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dy="4" />
+                                <feGaussianBlur stdDeviation="2" />
+                                <feComposite in2="hardAlpha" operator="out" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_8_5" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_8_5" result="shape" />
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="intitule">
+                    <h4> Moyenne du nombre de <br>voyageurs transportés entre <br> 2000 et 2019</h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
+                        <g clip-path="url(#clip0_8_33)">
+                            <path
+                                d="M14.6993 31.2684C14.6916 31.1906 14.6667 31.1189 14.6667 31.041V30.3742C14.6667 30.0569 14.7196 29.7441 14.8254 29.4465C14.8254 29.4465 16.5204 27.2218 17.322 24.6079C16.4441 22.7921 15.6472 20.5323 15.6472 18.2923C15.6472 17.772 15.6862 17.2685 15.7407 16.7725C14.5967 15.5976 13.0512 14.9323 11.3438 14.9323C7.81852 14.9323 4.95794 17.7521 4.95794 22.1344C4.95794 25.6408 7.86843 29.4464 7.86843 29.4464C7.97112 29.744 8.02412 30.0568 8.02412 30.3741V31.0409C8.02412 31.8726 7.52916 32.6294 6.75718 32.9758L2.13621 34.8267C1.06222 35.3119 0.298014 36.2793 0.08485 37.4176L0.00546129 38.414C-0.0349801 38.9328 0.145512 39.444 0.506596 39.824C0.866086 40.207 1.372 40.4221 1.90272 40.4221H9.4559L9.76559 36.5204L9.78581 36.4152C10.164 34.369 11.543 32.6294 13.4698 31.7597L14.6993 31.2684Z"
+                                fill="#651C32" />
+                            <path
+                                d="M50.9151 37.4176C50.7035 36.2793 49.9393 35.3118 48.8654 34.8267L44.2413 32.9758C43.4693 32.6294 42.9775 31.8726 42.9775 31.0409V30.3741C42.9775 30.0568 43.0289 29.744 43.1346 29.4464C43.1346 29.4464 46.0435 25.6408 46.0435 22.1344C46.0435 17.7521 43.1844 14.9323 39.653 14.9323C37.9488 14.9323 36.4032 15.5976 35.2561 16.7755C35.3122 17.2699 35.3511 17.7719 35.3511 18.2922C35.3511 20.5307 34.5558 22.7906 33.6795 24.6063C34.4795 27.2201 36.1775 29.4464 36.1775 29.4464C36.2802 29.744 36.3347 30.0568 36.3347 30.3741V31.0409C36.3347 31.1188 36.3082 31.1905 36.3004 31.2683L37.446 31.7261C39.4537 32.6264 40.8327 34.3658 41.2156 36.412L41.2343 36.5189L41.5425 40.4221H49.0988C49.6295 40.4221 50.1353 40.207 50.4933 39.824C50.8544 39.444 51.035 38.9328 50.9944 38.414L50.9151 37.4176Z"
+                                fill="#651C32" />
+                            <path
+                                d="M36.643 33.6532L31.0493 31.4117C30.1155 30.9905 29.5194 30.075 29.5194 29.071V28.2623C29.5194 27.8809 29.5817 27.5009 29.7109 27.1393C29.7109 27.1393 33.2284 22.5372 33.2284 18.2922C33.2284 12.9882 29.7686 9.57794 25.4993 9.57794C21.2316 9.57794 17.7702 12.9883 17.7702 18.2922C17.7702 22.5372 21.2908 27.1393 21.2908 27.1393C21.4169 27.5009 21.4823 27.8809 21.4823 28.2623V29.071C21.4823 30.075 20.8815 30.9905 19.9492 31.4117L14.3555 33.6532C13.0559 34.2376 12.1298 35.4095 11.8746 36.7889L11.5867 40.422H25.4993H39.4119L39.1272 36.7889C38.8687 35.4096 37.9426 34.2377 36.643 33.6532Z"
+                                fill="#651C32" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_8_33">
+                                <rect width="51" height="50" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+            <div class="column">
+                <div class="intitule">
+                    <h4>Nombre de personnes <br>travaillant pour la SNCF<br>sur l’année 2021</h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
+                        <g clip-path="url(#clip0_8_33)">
+                            <path
+                                d="M14.6993 31.2684C14.6916 31.1906 14.6667 31.1189 14.6667 31.041V30.3742C14.6667 30.0569 14.7196 29.7441 14.8254 29.4465C14.8254 29.4465 16.5204 27.2218 17.322 24.6079C16.4441 22.7921 15.6472 20.5323 15.6472 18.2923C15.6472 17.772 15.6862 17.2685 15.7407 16.7725C14.5967 15.5976 13.0512 14.9323 11.3438 14.9323C7.81852 14.9323 4.95794 17.7521 4.95794 22.1344C4.95794 25.6408 7.86843 29.4464 7.86843 29.4464C7.97112 29.744 8.02412 30.0568 8.02412 30.3741V31.0409C8.02412 31.8726 7.52916 32.6294 6.75718 32.9758L2.13621 34.8267C1.06222 35.3119 0.298014 36.2793 0.08485 37.4176L0.00546129 38.414C-0.0349801 38.9328 0.145512 39.444 0.506596 39.824C0.866086 40.207 1.372 40.4221 1.90272 40.4221H9.4559L9.76559 36.5204L9.78581 36.4152C10.164 34.369 11.543 32.6294 13.4698 31.7597L14.6993 31.2684Z"
+                                fill="#651C32" />
+                            <path
+                                d="M50.9151 37.4176C50.7035 36.2793 49.9393 35.3118 48.8654 34.8267L44.2413 32.9758C43.4693 32.6294 42.9775 31.8726 42.9775 31.0409V30.3741C42.9775 30.0568 43.0289 29.744 43.1346 29.4464C43.1346 29.4464 46.0435 25.6408 46.0435 22.1344C46.0435 17.7521 43.1844 14.9323 39.653 14.9323C37.9488 14.9323 36.4032 15.5976 35.2561 16.7755C35.3122 17.2699 35.3511 17.7719 35.3511 18.2922C35.3511 20.5307 34.5558 22.7906 33.6795 24.6063C34.4795 27.2201 36.1775 29.4464 36.1775 29.4464C36.2802 29.744 36.3347 30.0568 36.3347 30.3741V31.0409C36.3347 31.1188 36.3082 31.1905 36.3004 31.2683L37.446 31.7261C39.4537 32.6264 40.8327 34.3658 41.2156 36.412L41.2343 36.5189L41.5425 40.4221H49.0988C49.6295 40.4221 50.1353 40.207 50.4933 39.824C50.8544 39.444 51.035 38.9328 50.9944 38.414L50.9151 37.4176Z"
+                                fill="#651C32" />
+                            <path
+                                d="M36.643 33.6532L31.0493 31.4117C30.1155 30.9905 29.5194 30.075 29.5194 29.071V28.2623C29.5194 27.8809 29.5817 27.5009 29.7109 27.1393C29.7109 27.1393 33.2284 22.5372 33.2284 18.2922C33.2284 12.9882 29.7686 9.57794 25.4993 9.57794C21.2316 9.57794 17.7702 12.9883 17.7702 18.2922C17.7702 22.5372 21.2908 27.1393 21.2908 27.1393C21.4169 27.5009 21.4823 27.8809 21.4823 28.2623V29.071C21.4823 30.075 20.8815 30.9905 19.9492 31.4117L14.3555 33.6532C13.0559 34.2376 12.1298 35.4095 11.8746 36.7889L11.5867 40.422H25.4993H39.4119L39.1272 36.7889C38.8687 35.4096 37.9426 34.2377 36.643 33.6532Z"
+                                fill="#651C32" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_8_33">
+                                <rect width="51" height="50" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="chiffres">
+                    <h3 id="total_effectif"></h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="121" height="118" viewBox="0 0 121 118" fill="none">
+                        <g filter="url(#filter0_d_8_12)">
+                            <path
+                                d="M45.7749 6.06909C28.3898 6.06909 17.8347 15.0355 14.7302 19.5187C10.5909 27.3643 2.9332 45.7455 5.41678 56.5052C8.52125 69.9549 14.7302 83.4045 27.1481 100.217C37.0824 113.666 68.541 110.304 83.0285 106.941C100.414 104.251 110.969 85.6461 114.073 76.6797C120.282 49.7804 110.969 32.9684 107.864 26.2435C104.76 19.5187 89.2374 6.06909 83.0285 2.70668C76.8196 -0.655727 70.6106 -0.655727 64.4017 2.70668C59.4345 5.39661 49.9142 6.06909 45.7749 6.06909Z"
+                                fill="#F2827F" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_8_12" x="0.931793" y="0.184875" width="119.23" height="117.764"
+                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dy="4" />
+                                <feGaussianBlur stdDeviation="2" />
+                                <feComposite in2="hardAlpha" operator="out" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_8_12" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_8_12"
+                                    result="shape" />
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+
+            </div>
+            <div class="column">
+                <div class="chiffres">
+                    <h3 id="total_gares"></h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="121" height="118" viewBox="0 0 121 118" fill="none">
+                        <g filter="url(#filter0_d_8_12)">
+                            <path
+                                d="M45.7749 6.06909C28.3898 6.06909 17.8347 15.0355 14.7302 19.5187C10.5909 27.3643 2.9332 45.7455 5.41678 56.5052C8.52125 69.9549 14.7302 83.4045 27.1481 100.217C37.0824 113.666 68.541 110.304 83.0285 106.941C100.414 104.251 110.969 85.6461 114.073 76.6797C120.282 49.7804 110.969 32.9684 107.864 26.2435C104.76 19.5187 89.2374 6.06909 83.0285 2.70668C76.8196 -0.655727 70.6106 -0.655727 64.4017 2.70668C59.4345 5.39661 49.9142 6.06909 45.7749 6.06909Z"
+                                fill="#F2827F" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_8_12" x="0.931793" y="0.184875" width="119.23" height="117.764"
+                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dy="4" />
+                                <feGaussianBlur stdDeviation="2" />
+                                <feComposite in2="hardAlpha" operator="out" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_8_12" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_8_12"
+                                    result="shape" />
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="intitule">
+                    <h4>Nombre de gares pour<br>accueillir les passagers</h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="41" height="45" fill="#651C32" class="bi bi-train-front-fill" viewBox="0 0 16 16">
+                        <path d="M10.621.515C8.647.02 7.353.02 5.38.515c-.924.23-1.982.766-2.78 1.22C1.566 2.322 1 3.432 1 4.582V13.5A2.5 2.5 0 0 0 3.5 16h9a2.5 2.5 0 0 0 2.5-2.5V4.583c0-1.15-.565-2.26-1.6-2.849-.797-.453-1.855-.988-2.779-1.22ZM6.5 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1m-2 2h7A1.5 1.5 0 0 1 13 5.5v2A1.5 1.5 0 0 1 11.5 9h-7A1.5 1.5 0 0 1 3 7.5v-2A1.5 1.5 0 0 1 4.5 4m.5 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0m8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-3-1a1 1 0 1 1 0 2 1 1 0 0 1 0-2M4 5.5a.5.5 0 0 1 .5-.5h3v3h-3a.5.5 0 0 1-.5-.5zM8.5 8V5h3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5z"/>
+                      </svg>
+                </div>
+            </div>
+        </section>
+        <div class="split"></div>
+        <section>
+            <div class="slider">
+                <input type="radio" name="slider" title="slide1" checked="checked" class="slider__nav" />
+                <input type="radio" name="slider" title="slide2" class="slider__nav" />
+                <input type="radio" name="slider" title="slide3" class="slider__nav" />
+                <div class="slider__inner">
+                    <div class="slider__contents"><i class="slider__image fa fa-codepen"></i>
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="card-wrapper">
+                                    <div class="card">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+
+                                            <div class="card-image">
+                                                <img src="./assets/images/Chef-amico.png" alt="chef qui cuisine"
+                                                    class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name">La carte de restauration bar TGV</h2>
+                                            <p class="description">Découvrez toute l'offre alimentaire de la SNCF dans
+                                                leurs trains</p>
+                                                <a href="./pages/restauration.html" class="button">Voir plus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider__contents"><i class="slider__image fa fa-newspaper-o"></i>
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="card-wrapper">
+                                    <div class="card">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+
+                                            <div class="card-image">
+                                                <img src="./assets/images/Obsessive compulsive disorder-rafiki.png" alt="propreté des gares"
+                                                    class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name">La propreté dans les gares SNCF</h2>
+                                            <p class="description">Découvrez toute les inforamations sur la propreté dans les gares sncf</p>
+                                            <a href="./pages/proprete.html" class="button">Voir plus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider__contents"><i class="slider__image fa fa-television"></i>
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="card-wrapper">
+                                    <div class="card">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+
+                                            <div class="card-image">
+                                                <img src="./assets/images/Train-amico.png" alt="horaires des trains"
+                                                    class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name">La sécurité autour<br>des trains </h2>
+                                            <p class="description">Découvrez des données importantes sur la sécurité des trains SNCF</p>
+                                            <a href="./pages/securite.html" class="button">Voir plus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <div>
+            <p>
+                Raphaël | Eliot 2023 ©
+            </p>
+        </div>
+    </footer>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

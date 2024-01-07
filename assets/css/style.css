@@ -838,6 +838,7 @@ th {
     margin-bottom: 3vh;
     background-color: #F2827F;
     border-radius: 20px;
+    padding: 12px;
 }
 
 @media screen and (max-width: 768px) and (orientation: portrait) {

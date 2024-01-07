@@ -47,7 +47,11 @@
             <div id="chartLandscapeMessage">
                 <h3>Pour voir le graphique, veuillez tourner votre appareil.</h3>
             </div>
-            <canvas id="myChart" width="450" height="400"></canvas>
+            <div class="chart-container"
+                style="display:flex; justify-content: center;position: relative; height:60vh; width:80vw;">
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+
         </section>
         <div class="split"></div>
 
@@ -84,7 +88,8 @@
         </div>
     </footer>
     <script src="https://kit.fontawesome.com/9a21cee862.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.js"></script>
     <script src="./../assets/js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

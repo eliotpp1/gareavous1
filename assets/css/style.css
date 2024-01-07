@@ -849,3 +849,12 @@ th {
         display: block;
     }
 }
+
+@media screen and (orientation: landscape) {
+    nav {
+        height: 20vh !important;
+    }
+    .proprete {
+        height: 70vh !important;
+    }
+}

@@ -43,7 +43,6 @@
 
         <section class="nbrAccidents">
             <h2>Évolution du nombre d'accidents passagers entre 2008 et 2022</h2>
-            <p>(un accident passager désigne un accident qui touche une personne à l'intérieur d'un train)</p>
             <canvas id="myChart" width="450" height="400"></canvas>
         </section>
         <div class="split"></div>
@@ -113,7 +112,9 @@
                     });
                 })
                 .catch(error => console.error('Erreur lors de la récupération des données :', error));
+        });
 
+        document.addEventListener('DOMContentLoaded', function () {
             fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/accidents-passagers/records?select=AVG(nombre_accident)%20AS%20nbr_accidents&group_by=type_accident&limit=20")
                 .then(response => response.json())
                 .then(data => {
@@ -133,6 +134,17 @@
                                 backgroundColor: customColors,
                                 borderWidth: 1
                             }]
+                        },
+                        options: {
+                            plugins: {
+                                datalabels: {
+                                    formatter: (value, ctx) => {
+                                        return value; // Affiche la valeur brute sur chaque secteur
+                                    },
+                                    color: '#fff',
+                                    display: 'auto'
+                                }
+                            }
                         }
                     });
                 })

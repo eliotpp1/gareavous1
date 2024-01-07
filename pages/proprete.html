@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Graphique SNCF</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -26,7 +28,7 @@
             <a href="./securite.html">La sécurité des trains</a>
         </div>
     </header>
-        <main>
+    <main>
         <section class="proprete">
             <h1>La propreté des gares</h1>
             <div class="card-image">
@@ -45,49 +47,50 @@
             </p>
         </div>
     </footer>
-    
 
-        <script>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Récupérer les données de l'API SNCF avec fetch
-            fetch('https://ressources.data.sncf.com//api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=nom_gare%2C%20%20%20YEAR(mois)%20%20AS%20%20annee%20%20%2C%20%20%20AVG(taux_de_conformite)%20AS%20Taux&where=nom_gare%20IN%20(\'Angoul%C3%AAme\'%2C%20\'Bordeaux%20Saint-Jean\'%2C%20\'Poitiers\')&group_by=nom_gare%2C%20%20%20YEAR(mois)&limit=20')
+            fetch("https://ressources.data.sncf.com//api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=nom_gare,YEAR(mois) as annee,AVG(taux_de_conformite) as Taux&where=nom_gare%20IN%20('Angoul%C3%AAme'%2C%20'Bordeaux%20Saint-Jean'%2C%20'Poitiers')&group_by=nom_gare,YEAR(mois)&limit=20")
                 .then(response => response.json())
                 .then(data => {
-                    // Préparer les données pour le graphique
-                    const labels = Array.from(new Set(data.results.map(record => record.nom_gare)));
                     const years = Array.from(new Set(data.results.map(record => record.YEAR_mois)));
                     const datasets = [];
 
-                    labels.forEach(label => {
-                        const dataPoints = years.map(year => {
-                            const record = data.results.find(r => r.nom_gare === label && r.YEAR_mois === year);
-                            return record ? record.Taux : 0;
-                        });
+                    data.results.forEach(record => {
+                        const gareIndex = datasets.findIndex(dataset => dataset.label === record.nom_gare);
 
-                        datasets.push({
-                            label: label,
-                            data: dataPoints,
-                            backgroundColor: getRandomColor(),
-                            borderColor: getRandomColor(),
-                            borderWidth: 1
-                        });
+                        if (gareIndex === -1) {
+                            datasets.push({
+                                label: record.nom_gare,
+                                data: [],
+                                backgroundColor: getRandomColor(),
+                                borderColor: getRandomColor(),
+                                borderWidth: 1
+                            });
+                        }
+
+                        const index = datasets.findIndex(dataset => dataset.label === record.nom_gare);
+                        datasets[index].data.push(record.Taux);
                     });
+                    console.log(years);
 
                     // Créer le graphique avec Chart.js
                     const ctx = document.getElementById('myChart').getContext('2d');
                     new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: years,
+                            labels: ['2019', '2020', '2021', '2022', '2023'],
                             datasets: datasets
                         },
                         options: {
                             scales: {
                                 x: {
-                                    stacked: true
+                                    stacked: false
                                 },
                                 y: {
-                                    stacked: true
+                                    stacked: false
                                 }
                             }
                         }
@@ -95,6 +98,9 @@
                 })
                 .catch(error => console.error('Erreur lors de la récupération des données :', error));
         });
+
+
+
 
         // Fonction pour générer une couleur aléatoire
         function getRandomColor() {
@@ -108,4 +114,5 @@
     </script>
     <script src="./../assets/js/script.js"></script>
 </body>
+
 </html>

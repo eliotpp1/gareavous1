@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../assets/css/style.css">
     <title>Gare à vous !</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -39,7 +40,7 @@
         </section>
 
         <div class="split"></div>
-        
+
         <section id="datasSecurite">
             <h2>En résumé</h2>
             <div class="dateSecurite">
@@ -56,7 +57,12 @@
                 </div>
             </div>
         </section>
-
+        <section>
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </section>
+        <section>
+            <canvas id="myChart2" width="400" height="200"></canvas>
+        </section>
     </main>
     <footer>
         <div>
@@ -67,6 +73,76 @@
     </footer>
     <script src="https://kit.fontawesome.com/9a21cee862.js" crossorigin="anonymous"></script>
     <script src="./../assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/accidents-passagers/records?select=SUM(nombre_accident)%20AS%20nbr_accident&group_by=YEAR(annee)%20AS%20annee&limit=60")
+                .then(response => response.json())
+                .then(data => {
+                    const years = data.results.map(result => result.annee);
+                    const accidentCounts = data.results.map(result => result.nbr_accident);
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: years,
+                            datasets: [{
+                                label: 'Nombre d\'accidents',
+                                data: accidentCounts,
+                                borderColor: 'blue',
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    type: 'linear',
+                                    position: 'bottom'
+                                },
+                                y: {
+                                    min: 0
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Erreur lors de la récupération des données :', error));
+
+            fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/accidents-passagers/records?select=AVG(nombre_accident)%20AS%20nbr_accidents&group_by=type_accident&limit=20")
+                .then(response => response.json())
+                .then(data => {
+                    const labels = data.results.map(result => result.type_accident);
+                    const accidentCounts = data.results.map(result => result.nbr_accidents);
+                    const ctx = document.getElementById('myChart2').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                data: accidentCounts,
+                                backgroundColor: getRandomColors(accidentCounts.length),
+                                borderWidth: 1
+                            }]
+                        }
+                    });
+                })
+                .catch(error => console.error('Erreur lors de la récupération des données :', error));
+            function getRandomColors(count) {
+                const colors = [];
+                for (let i = 0; i < count; i++) {
+                    colors.push(getRandomColor());
+                }
+                return colors;
+            }
+                    function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        });
+    </script>
 </body>
 
 </html>

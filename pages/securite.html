@@ -43,14 +43,16 @@
 
         <section class="nbrAccidents">
             <h2>Évolution du nombre d'accidents passagers entre 2008 et 2022</h2>
-                <canvas id="appChart" height="400px" width="400px"></canvas>
+            <canvas id="myChart" width="450" height="400"></canvas>
         </section>
         <div class="split"></div>
 
         <section class="typeAccidents">
-            <h2>Évolution du nombre d'accidents passagers entre 2008 et 2022</h2>
-                <canvas id="appChart" height="400px" width="400px"></canvas>
+            <h2>Proportion de types d'accidents</h2>
+            <canvas id="myChart2" width="400" height="400"></canvas>
         </section>
+        <div class="split"></div>
+
 
         <section id="datasSecurite">
             <h2>En résumé</h2>
@@ -67,12 +69,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section>
-            <canvas id="myChart" width="400" height="200"></canvas>
-        </section>
-        <section>
-            <canvas id="myChart2" width="400" height="200"></canvas>
         </section>
     </main>
     <footer>
@@ -93,13 +89,14 @@
                     const accidentCounts = data.results.map(result => result.nbr_accident);
                     const ctx = document.getElementById('myChart').getContext('2d');
                     new Chart(ctx, {
-                        type: 'line',
+                        type: 'bar',
                         data: {
                             labels: years,
                             datasets: [{
-                                label: 'Nombre d\'accidents',
+                                label: 'Nombre d\'accidents passagers',
                                 data: accidentCounts,
-                                borderColor: 'blue',
+                                backgroundColor: 'rgba(242, 130, 127, 0.8)', // Couleur F2827F avec une opacité de 0.8
+                                borderColor: 'rgba(242, 130, 127, 1)',
                                 fill: false
                             }]
                         },
@@ -109,51 +106,38 @@
                                     type: 'linear',
                                     position: 'bottom'
                                 },
-                                y: {
-                                    min: 0
-                                }
                             }
                         }
                     });
                 })
                 .catch(error => console.error('Erreur lors de la récupération des données :', error));
-
+    
             fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/accidents-passagers/records?select=AVG(nombre_accident)%20AS%20nbr_accidents&group_by=type_accident&limit=20")
                 .then(response => response.json())
                 .then(data => {
                     const labels = data.results.map(result => result.type_accident);
                     const accidentCounts = data.results.map(result => result.nbr_accidents);
                     const ctx = document.getElementById('myChart2').getContext('2d');
+                    
+                    // Utiliser trois nuances de rose
+                    const customColors = ['#F2827F', '#F8C1B8', '#651C32'];
+    
                     new Chart(ctx, {
                         type: 'pie',
                         data: {
                             labels: labels,
                             datasets: [{
                                 data: accidentCounts,
-                                backgroundColor: getRandomColors(accidentCounts.length),
+                                backgroundColor: customColors,
                                 borderWidth: 1
                             }]
                         }
                     });
                 })
                 .catch(error => console.error('Erreur lors de la récupération des données :', error));
-            function getRandomColors(count) {
-                const colors = [];
-                for (let i = 0; i < count; i++) {
-                    colors.push(getRandomColor());
-                }
-                return colors;
-            }
-                    function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
         });
     </script>
+    
 </body>
 
 </html>

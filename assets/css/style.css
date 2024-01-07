@@ -676,6 +676,11 @@ th {
     font-weight: bold;
     text-align: center;
     margin-top: 3vh;
+}
+
+.nbrAccidents p{
+    color: #651C32;
+    text-align: center;
     margin-bottom: 3vh;
 }
 
@@ -691,6 +696,11 @@ th {
     font-weight: bold;
     text-align: center;
     margin-top: 3vh;
+}
+
+.typeAccidents p{
+    color: #651C32;
+    text-align: center;
     margin-bottom: 3vh;
 }
 

@@ -189,7 +189,7 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-
                 
 
                 // Affichage du résultat
-                document.querySelector("#pourcentage_porc").innerHTML += pourcentageArrondi + " % des produits <br>ne contiennet pas de porc";
+                document.querySelector("#pourcentage_porc").innerHTML += pourcentageArrondi + " % des produits <br>ne contiennent pas de porc";
             })
             .catch(error2 => {
                 console.error("Une erreur s'est produite lors de la récupération du nombre total de produits :", error2);

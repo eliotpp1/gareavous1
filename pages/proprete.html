@@ -43,6 +43,9 @@
                 taux moyen d’anomalies observés sur les 5
                 dernières années et indicateurs pour les gares
                 d’Angoulême, Bordeaux et Poitiers.</h2>
+                <div id="chartLandscapeMessage">
+                    <h3>Pour voir le graphique, veuillez tourner votre appareil.</h3>
+                </div>
             <canvas id="myChart" width="400" height="400"></canvas>
         </section>
         <div class="split"></div>
@@ -130,7 +133,8 @@
                 }
 
                 const index = datasets.findIndex(dataset => dataset.label === record.nom_gare);
-                datasets[index].data.push(record.Taux);
+                taux_anom = 100 - record.Taux;
+                datasets[index].data.push(taux_anom);
             });
             console.log(years);
 

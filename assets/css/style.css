@@ -823,3 +823,28 @@ th {
     font-weight: bold;
     font-size: 1rem;
 }
+
+#myChart {
+    display: block !important;
+}
+#chartLandscapeMessage {
+    display: none;
+}
+#chartLandscapeMessage > h3 {
+    color: #651C32;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    background-color: #F2827F;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    #myChart {
+        display: none !important;
+    }
+    #chartLandscapeMessage {
+        display: block;
+    }
+}

@@ -43,6 +43,13 @@
 
         <section class="nbrAccidents">
             <h2>Évolution du nombre d'accidents passagers entre 2008 et 2022</h2>
+<<<<<<< HEAD
+=======
+            <p>(un accident passager désigne un accident qui touche une personne à l'intérieur d'un train)</p>
+            <div id="chartLandscapeMessage">
+                <h3>Pour voir le graphique, veuillez tourner votre appareil.</h3>
+            </div>
+>>>>>>> 3c16ceb115996459e3b56575a1d12270d40ea5f8
             <canvas id="myChart" width="450" height="400"></canvas>
         </section>
         <div class="split"></div>
@@ -80,6 +87,7 @@
         </div>
     </footer>
     <script src="https://kit.fontawesome.com/9a21cee862.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="./../assets/js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -127,6 +135,7 @@
 
                     new Chart(ctx, {
                         type: 'pie',
+                        plugins: [ChartDataLabels],
                         data: {
                             labels: labels,
                             datasets: [{

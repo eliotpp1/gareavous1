@@ -164,17 +164,6 @@
                                 borderWidth: 1
                             }]
                         },
-                        options: {
-                            plugins: {
-                                datalabels: {
-                                    formatter: (value, ctx) => {
-                                        return value; // Affiche la valeur brute sur chaque secteur
-                                    },
-                                    color: '#fff',
-                                    display: 'auto'
-                                }
-                            }
-                        }
                     });
                 })
                 .catch(error => console.error('Erreur lors de la récupération des données :', error));

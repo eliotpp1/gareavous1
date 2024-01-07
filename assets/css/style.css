@@ -854,7 +854,7 @@ th {
     nav {
         height: 20vh !important;
     }
-    .proprete {
+    .proprete, .restauration, .securite {
         height: 70vh !important;
     }
 }

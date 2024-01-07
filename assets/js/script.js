@@ -216,3 +216,50 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-
         const totalMortsArrondie = totalMorts.toFixed(0);
         document.querySelector("#mort").innerHTML = "Depuis 2004, " + totalMortsArrondie + " personnes sont mortes sur les passages à niveau";
     })
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Récupérer les données de l'API SNCF avec fetch
+        fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/frequentation-gares/records?select=total_voyageurs_2019&limit=20&refine=nom_gare%3A%22Angoul%C3%AAme%22&refine=nom_gare%3A%22Poitiers%22&refine=nom_gare%3A%22Bordeaux%20Saint-Jean%22")
+            .then(response => response.json())
+            .then(data => {
+                const formatVoyageurs = (total) => (total / 1000000).toFixed(2) + "M"; // Diviser par un million et formater
+              
+                const totalVoyageurs = formatVoyageurs(data.results[0].total_voyageurs_2019);
+                document.querySelector("#nb_voy1").innerHTML = "En 2019, " + totalVoyageurs + " voyageurs sont passés par la gare de Bordeaux Saint-Jean";
+    
+                const totalVoyageurs2 = formatVoyageurs(data.results[1].total_voyageurs_2019);
+                document.querySelector("#nb_voy2").innerHTML = "En 2019, " + totalVoyageurs2 + " voyageurs sont passés par la gare de Poitiers";
+    
+                const totalVoyageurs3 = formatVoyageurs(data.results[2].total_voyageurs_2019);
+                document.querySelector("#nb_voy3").innerHTML = "En 2019, " + totalVoyageurs3 + " voyageurs sont passés par la gare d'Angoulême";
+            })
+            .catch(error => console.error('Erreur lors de la récupération des données :', error));
+    });
+
+    fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=AVG(taux_de_conformite)%20AS%20taux_angou&limit=1&refine=mois%3A%222019%22&refine=nom_gare%3A%22Angoul%C3%AAme%22")
+    .then(response => response.json())
+    .then(data => {
+        const tauxAngou = data.results[0].taux_angou;
+        const tauxAngouArrondie = tauxAngou.toFixed(0);
+        document.querySelector("#taux_conf1").innerHTML = "En 2019, le taux de conformité de la gare d'Angoulême était de " + tauxAngouArrondie + "%";
+    })
+
+    fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=AVG(taux_de_conformite)%20AS%20taux_bdx&limit=1&refine=mois%3A%222019%22&refine=nom_gare%3A%22Bordeaux%20Saint-Jean%22")
+    .then(response => response.json())
+    .then(data => {
+        const tauxBdx = data.results[0].taux_bdx;
+        const tauxBdxArrondie = tauxBdx.toFixed(0);
+        document.querySelector("#taux_conf2").innerHTML = "En 2019, le taux de conformité de la gare de Bordeaux Saint-Jean était de " + tauxBdxArrondie + "%";
+    })
+
+    fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=AVG(taux_de_conformite)%20AS%20taux_poit&limit=1&refine=mois%3A%222019%22&refine=nom_gare%3A%22Poitiers%22")
+    .then(response => response.json())
+    .then(data => {
+        const tauxPoit = data.results[0].taux_poit;
+        const tauxPoitArrondie = tauxPoit.toFixed(0);
+        document.querySelector("#taux_conf3").innerHTML = "En 2019, le taux de conformité de la gare de Poitiers était de " + tauxPoitArrondie + "%";
+    })
+
+
+    
+

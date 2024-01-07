@@ -679,6 +679,35 @@ th {
     margin-bottom: 3vh;
 }
 
+.typeAccidents{
+    margin-right: auto;
+    margin-left: auto;
+    width: 90vw;
+    margin-bottom: 3vh;
+}
+
+.typeAccidents>h2{
+    color: #651C32;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.chartProprete{
+    margin-right: auto;
+    margin-left: auto;
+    width: 90vw;
+    margin-bottom: 3vh;
+}
+
+.chartProprete>h2{
+    color: #651C32;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
 .container {
     width: 80vw;
     height: 70vh;
@@ -690,4 +719,97 @@ th {
     width: 100%;
     height: 100%;
     z-index: 20;
+}
+
+.indicProprete{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.indicProprete>h2{
+    color: #651C32;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3vh;
+}
+
+.statsGares{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.statGare{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    padding: 20px;
+}
+
+.inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to bottom, #F8C1B8, #FFF);
+}
+
+.statGare img{
+    height: 120px;
+    width: 120px;
+    
+}
+
+.statGare h3{
+    color: #651C32;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.nom{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.pronbr{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to bottom, #F8C1B8, #FFF);
+    padding: 20px;
+}
+
+.pronbr p{
+    color: #651C32;
+    font-weight: bold;
+    font-size: 1rem;
 }

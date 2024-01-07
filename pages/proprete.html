@@ -35,8 +35,66 @@
                 <img src="./../assets/images/Obsessive compulsive disorder-rafiki.png" alt="personne qui nettoie"
                     class="card-img">
             </div>
-            <canvas id="myChart" width="400" height="200"></canvas>
         </section>
+        <div class="split"></div>
+
+        <section class="chartProprete">
+            <h2>Évolution du
+                taux moyen d’anomalies observés sur les 5
+                dernières années et indicateurs pour les gares
+                d’Angoulême, Bordeaux et Poitiers.</h2>
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </section>
+        <div class="split"></div>
+        <section class="indicProprete">
+            <h2>Indicateurs de propreté pour les gares d’Angoulême, Bordeaux et Poitiers</h2>
+            <div class="statsGares">
+                <div class="statGare">
+                    <div class="inner">
+                        <div class="nom">
+                            <h3>Gare d'Angoulême</h3>
+                            <img src="./../assets/images/gare.png" alt="dessin de gare">
+                        </div>
+                        <div class="pronbr">
+                            <p id="nb_voy1"></p>
+                            <p id="taux_conf1"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="statGare">
+                    <div class="inner">
+                        <div class="nom">
+                            <h3>Gare de Bordeaux</h3>
+                            <img src="./../assets/images/gare.png" alt="dessin de gare">
+                        </div>
+                        <div class="pronbr">
+                            <p id="nb_voy2"></p>
+                            <p id="taux_conf2"></p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="statGare">
+                    <div class="inner">
+                    <div class="nom">
+                        <h3>Gare de Poitiers</h3>
+                        <img src="./../assets/images/gare.png" alt="dessin de gare">
+                    </div>
+                    <div class="pronbr">
+                        <p id="nb_voy3"></p>
+                        <p id="taux_conf3"></p>
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+        </section>
+        <div class="split"></div>
+
+
+
+            
+
 
 
     </main>
@@ -51,66 +109,65 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Récupérer les données de l'API SNCF avec fetch
-            fetch("https://ressources.data.sncf.com//api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=nom_gare,YEAR(mois) as annee,AVG(taux_de_conformite) as Taux&where=nom_gare%20IN%20('Angoul%C3%AAme'%2C%20'Bordeaux%20Saint-Jean'%2C%20'Poitiers')&group_by=nom_gare,YEAR(mois)&limit=20")
-                .then(response => response.json())
-                .then(data => {
-                    const years = Array.from(new Set(data.results.map(record => record.YEAR_mois)));
-                    const datasets = [];
+    // Récupérer les données de l'API SNCF avec fetch
+    fetch("https://ressources.data.sncf.com//api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=nom_gare,YEAR(mois) as annee,AVG(taux_de_conformite) as Taux&where=nom_gare%20IN%20('Angoul%C3%AAme'%2C%20'Bordeaux%20Saint-Jean'%2C%20'Poitiers')&group_by=nom_gare,YEAR(mois)&limit=20")
+        .then(response => response.json())
+        .then(data => {
+            const years = Array.from(new Set(data.results.map(record => record.YEAR_mois)));
+            const datasets = [];
 
-                    data.results.forEach(record => {
-                        const gareIndex = datasets.findIndex(dataset => dataset.label === record.nom_gare);
+            data.results.forEach(record => {
+                const gareIndex = datasets.findIndex(dataset => dataset.label === record.nom_gare);
 
-                        if (gareIndex === -1) {
-                            datasets.push({
-                                label: record.nom_gare,
-                                data: [],
-                                backgroundColor: getRandomColor(),
-                                borderColor: getRandomColor(),
-                                borderWidth: 1
-                            });
-                        }
-
-                        const index = datasets.findIndex(dataset => dataset.label === record.nom_gare);
-                        datasets[index].data.push(record.Taux);
+                if (gareIndex === -1) {
+                    datasets.push({
+                        label: record.nom_gare,
+                        data: [],
+                        backgroundColor: getPinkColor(datasets.length), // Utilisez datasets.length comme index
+                        borderColor: getPinkColor(datasets.length), // Utilisez datasets.length comme index
+                        borderWidth: 1
                     });
-                    console.log(years);
+                }
 
-                    // Créer le graphique avec Chart.js
-                    const ctx = document.getElementById('myChart').getContext('2d');
-                    new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['2019', '2020', '2021', '2022', '2023'],
-                            datasets: datasets
+                const index = datasets.findIndex(dataset => dataset.label === record.nom_gare);
+                datasets[index].data.push(record.Taux);
+            });
+            console.log(years);
+
+            // Créer le graphique avec Chart.js
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['2019', '2020', '2021', '2022', '2023'],
+                    datasets: datasets
+                },
+                options: {
+                    scales: {
+                        x: {
+                            stacked: false
                         },
-                        options: {
-                            scales: {
-                                x: {
-                                    stacked: false
-                                },
-                                y: {
-                                    stacked: false
+                        y: {
+                            stacked: false,
+                            ticks: {
+                                callback: function (value, index, values) {
+                                    return value + '%';
                                 }
                             }
                         }
-                    });
-                })
-                .catch(error => console.error('Erreur lors de la récupération des données :', error));
-        });
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Erreur lors de la récupération des données :', error));
+});
 
+// Fonction pour générer une couleur aléatoire
+function getPinkColor(index) {
+    const pinkColors = ['#F8C1B8', '#F2827F', '#651C32'];
+    return pinkColors[index % pinkColors.length];
+}
 
-
-
-        // Fonction pour générer une couleur aléatoire
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
     </script>
     <script src="./../assets/js/script.js"></script>
 </body>

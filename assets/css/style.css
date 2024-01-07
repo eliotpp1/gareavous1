@@ -861,3 +861,37 @@ th {
         display: block;
     }
 }
+
+@media screen and (orientation: landscape) {
+    nav {
+        height: 20vh !important;
+    }
+    .proprete, .restauration, .securite {
+        height: 70vh !important;
+    }
+    .carteFr h2{
+        left: 6.5%;
+    }
+    .slider {
+        height: 150vh;
+    }
+    .indicateurs {
+        height: 200vh;
+    }
+    .home svg {
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .home-text h1 {
+        top: 10vh;
+        left: 88%;
+    }
+    .home-text h2 {
+        top: 45vh;
+        left: 90%;
+    }
+    .home{
+        height: 70vh;
+    }
+}

@@ -110,7 +110,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
     // Récupérer les données de l'API SNCF avec fetch
-    fetch("https://ressources.data.sncf.com//api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=nom_gare,YEAR(mois) as annee,AVG(taux_de_conformite) as Taux&where=nom_gare%20IN%20('Angoul%C3%AAme'%2C%20'Bordeaux%20Saint-Jean'%2C%20'Poitiers')&group_by=nom_gare,YEAR(mois)&limit=20")
+    fetch("https://corsproxy.io/?https://ressources.data.sncf.com//api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=nom_gare,YEAR(mois) as annee,AVG(taux_de_conformite) as Taux&where=nom_gare%20IN%20('Angoul%C3%AAme'%2C%20'Bordeaux%20Saint-Jean'%2C%20'Poitiers')&group_by=nom_gare,YEAR(mois)&limit=20")
         .then(response => response.json())
         .then(data => {
             const years = Array.from(new Set(data.results.map(record => record.YEAR_mois)));

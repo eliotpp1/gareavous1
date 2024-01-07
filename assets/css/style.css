@@ -801,6 +801,7 @@ th {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    margin: 2vh;
 }
 
 .pronbr{
@@ -809,7 +810,6 @@ th {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin-top: 3vh;
     margin-bottom: 3vh;
     border: 1px solid #ccc;
     border-radius: 8px;

@@ -130,7 +130,8 @@
                 }
 
                 const index = datasets.findIndex(dataset => dataset.label === record.nom_gare);
-                datasets[index].data.push(record.Taux);
+                taux_anom = 100 - record.Taux;
+                datasets[index].data.push(taux_anom);
             });
             console.log(years);
 

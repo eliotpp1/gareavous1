@@ -43,6 +43,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 });
+//slider
 
 
 // Fecth API
@@ -95,7 +96,6 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/refere
 fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-des-bars-tgv/records?select=categorie_produit%2C%20%20%20%20%20produit%2C%20%20%20%20%20prix_au_produit&group_by=categorie_produit%2C%20produit%2C%20prix_au_produit&order_by=categorie_produit&limit=58")
     .then(response => response.json())
     .then(data => {
-        console.log(data);
 
         // Création du tableau
         const tableau = document.createElement('table');

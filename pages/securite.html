@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../assets/css/style.css">
     <title>Gare à vous !</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -39,7 +40,18 @@
         </section>
 
         <div class="split"></div>
-        
+
+        <section class="nbrAccidents">
+            <h2>Évolution du nombre d'accidents passagers entre 2008 et 2022</h2>
+                <canvas id="appChart" height="400px" width="400px"></canvas>
+        </section>
+        <div class="split"></div>
+
+        <section class="typeAccidents">
+            <h2>Évolution du nombre d'accidents passagers entre 2008 et 2022</h2>
+                <canvas id="appChart" height="400px" width="400px"></canvas>
+        </section>
+
         <section id="datasSecurite">
             <h2>En résumé</h2>
             <div class="dateSecurite">
@@ -67,6 +79,48 @@
     </footer>
     <script src="https://kit.fontawesome.com/9a21cee862.js" crossorigin="anonymous"></script>
     <script src="./../assets/js/script.js"></script>
+    
+    <script>
+        fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/accidents-passagers/records?select=SUM(nombre_accident)%20AS%20nbr_accident&group_by=YEAR(annee)%20AS%20annee&limit=60")
+    .then(response => response.json())
+    .then(data => {
+        var nbrAccident = data.results.map(record => record.nbr_accident);
+        var annee = data.results.map(record => record.annee);
+        var ctx = document.getElementById('appChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: annee,
+                datasets: [{
+                    label: 'Nombre d\'accidents passagers',
+                    data: nbrAccident,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+    });
+
+
+
+
+
+    </script>
+
 </body>
 
 </html>

@@ -42,8 +42,8 @@
         <section class="chartProprete">
             <h2>Évolution du
                 taux moyen d’anomalies observés sur les 5
-                dernières années et indicateurs pour les gares
-                d’Angoulême, Bordeaux et Poitiers.</h2>
+                dernières années dans toutes les gares.</h2>
+                <p id="explc">(Une anomalie survient lorsque le nombre d'observations non conformes aux normes de propreté dépasse 10% du nombre total d'observations effectuées dans une gare spécifique au cours d'un mois donné.)</p>
                 <div id="chartLandscapeMessage">
                     <h3>Pour voir le graphique, veuillez tourner votre appareil.</h3>
                 </div>
@@ -110,11 +110,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
     // Récupérer les données de l'API SNCF avec fetch
-    fetch("https://corsproxy.io/?https://ressources.data.sncf.com//api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=nom_gare,YEAR(mois) as annee,AVG(taux_de_conformite) as Taux&where=nom_gare%20IN%20('Angoul%C3%AAme'%2C%20'Bordeaux%20Saint-Jean'%2C%20'Poitiers')&group_by=nom_gare,YEAR(mois)&limit=20")
+    fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/proprete-en-gare/records?select=YEAR(mois)%20as%20annee%2C%20AVG(taux_de_conformite)%20as%20Taux&group_by=YEAR(mois)&limit=20")
         .then(response => response.json())
         .then(data => {
             const years = Array.from(new Set(data.results.map(record => record.YEAR_mois)));
             const datasets = [];
+
 
             data.results.forEach(record => {
                 const gareIndex = datasets.findIndex(dataset => dataset.label === record.nom_gare);
@@ -123,7 +124,7 @@
                     datasets.push({
                         label: record.nom_gare,
                         data: [],
-                        backgroundColor: getPinkColor(datasets.length), // Utilisez datasets.length comme index
+                        backgroundColor: "#F2827F", // Utilisez datasets.length comme index
                         borderColor: getPinkColor(datasets.length), // Utilisez datasets.length comme index
                         borderWidth: 1
                     });
@@ -132,6 +133,10 @@
                 const index = datasets.findIndex(dataset => dataset.label === record.nom_gare);
                 taux_anom = 100 - record.Taux;
                 datasets[index].data.push(taux_anom);
+            });
+
+            datasets.forEach(dataset => {
+                dataset.label = 'Taux d\'anomalies';
             });
             console.log(years);
 

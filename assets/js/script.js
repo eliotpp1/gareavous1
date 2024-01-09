@@ -224,14 +224,14 @@ fetch("https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/menus-
             .then(data => {
                 const formatVoyageurs = (total) => (total / 1000000).toFixed(2) + "M"; // Diviser par un million et formater
               
-                const totalVoyageurs = formatVoyageurs(data.results[0].total_voyageurs_2019);
-                document.querySelector("#nb_voy1").innerHTML = "En 2019, " + totalVoyageurs + " voyageurs sont passés par la gare de Bordeaux Saint-Jean";
+                const totalVoyageurs = formatVoyageurs(data.results[1].total_voyageurs_2019);
+                document.querySelector("#nb_voy1").innerHTML = "En 2019, " + totalVoyageurs + " voyageurs sont passés par la gare de d'Angoulême";
     
-                const totalVoyageurs2 = formatVoyageurs(data.results[1].total_voyageurs_2019);
-                document.querySelector("#nb_voy2").innerHTML = "En 2019, " + totalVoyageurs2 + " voyageurs sont passés par la gare de Poitiers";
+                const totalVoyageurs2 = formatVoyageurs(data.results[0].total_voyageurs_2019);
+                document.querySelector("#nb_voy2").innerHTML = "En 2019, " + totalVoyageurs2 + " voyageurs sont passés par la gare de Bordeaux St-Jean";
     
                 const totalVoyageurs3 = formatVoyageurs(data.results[2].total_voyageurs_2019);
-                document.querySelector("#nb_voy3").innerHTML = "En 2019, " + totalVoyageurs3 + " voyageurs sont passés par la gare d'Angoulême";
+                document.querySelector("#nb_voy3").innerHTML = "En 2019, " + totalVoyageurs3 + " voyageurs sont passés par la gare de Poitiers";
             })
             .catch(error => console.error('Erreur lors de la récupération des données :', error));
     });
